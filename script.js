@@ -87,7 +87,15 @@ const translations = {
         quick_records: "Farm Records",
         quick_advisor: "AI Advisor",
         crop_cotton_summary: "Cotton: 2.0 Acres",
-        crop_tomato_summary: "Tomato: 1.5 Acres"
+        crop_tomato_summary: "Tomato: 1.5 Acres",
+        records_title: "Farm Records",
+        records_income: "Income (Aug)",
+        records_expense: "Expense (Aug)",
+        recent_transactions: "Recent Transactions",
+        record_milk_sales: "Milk Sales",
+        record_fertilizer: "Urea Fertilizer",
+        record_tractor: "Tractor Rent",
+        add_new_transaction: "+ Add Transaction"
     },
     hi: {
         greeting: "नमस्ते, गणेश सिंह!",
@@ -177,7 +185,15 @@ const translations = {
         quick_records: "फार्म रिकॉर्ड",
         quick_advisor: "AI सलाहकार",
         crop_cotton_summary: "कपास (Cotton): 2.0 Acres",
-        crop_tomato_summary: "टमाटर (Tomato): 1.5 Acres"
+        crop_tomato_summary: "टमाटर (Tomato): 1.5 Acres",
+        records_title: "फार्म रिकॉर्ड",
+        records_income: "आय (अगस्त)",
+        records_expense: "व्यय (अगस्त)",
+        recent_transactions: "हाल के लेनदेन",
+        record_milk_sales: "दूध की बिक्री",
+        record_fertilizer: "यूरिया उर्वरक",
+        record_tractor: "ट्रैक्टर किराया",
+        add_new_transaction: "+ नया लेनदेन जोड़ें"
     }
 };
 
@@ -228,6 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const viewMyCrops = document.getElementById("my-crops-view");
     const viewMyLivestock = document.getElementById("my-livestock-view");
     const viewDiseaseDetection = document.getElementById("disease-detection-view");
+    const viewFarmRecords = document.getElementById("farm-records-view");
     
     const floatBtnIcon = document.getElementById("float-btn-icon");
     const mainFloatBtn = document.getElementById("main-float-btn");
@@ -240,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(viewMyCrops) viewMyCrops.style.display = "none";
         if(viewMyLivestock) viewMyLivestock.style.display = "none";
         if(viewDiseaseDetection) viewDiseaseDetection.style.display = "none";
+        if(viewFarmRecords) viewFarmRecords.style.display = "none";
         if(floatingMicContainer) floatingMicContainer.style.display = "block"; // Default show
         
         // Remove active class from nav items by default

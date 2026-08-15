@@ -53,7 +53,7 @@
                     </div>
                     <span style="font-size: 11px; font-weight: 600;" data-i18n="quick_livestock">Livestock</span>
                 </div>
-                <div style="cursor: pointer;">
+                <div style="cursor: pointer;" onclick="navigateTo('farm-records-view')">
                     <div style="background: white; border-radius: 12px; padding: 15px 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 5px;">
                         <i class="fa-solid fa-clipboard-list" style="font-size: 24px; color: #136B36;"></i>
                     </div>
@@ -403,6 +403,66 @@
             </div>
 
             <button class="primary-btn-full" style="margin-top: 15px;" data-i18n="save_to_records">Save to Records</button>
+        </div>
+        <div style="height: 100px;"></div>
+    </main>
+    <!-- FARM RECORDS VIEW -->
+    <main class="app-content" id="farm-records-view" style="display: none; padding: 0; background-color: #FAF6F0;">
+        <div class="details-header">
+            <i class="fa-solid fa-arrow-left back-btn" onclick="navigateTo('dashboard-view')" style="cursor: pointer; padding: 5px;"></i>
+            <span data-i18n="records_title" style="font-weight: 600;">Farm Records</span>
+            <i class="fa-solid fa-filter" style="cursor: pointer; padding: 5px;"></i>
+        </div>
+        
+        <!-- Summary Cards -->
+        <div style="padding: 15px; display: flex; gap: 10px;">
+            <div style="flex: 1; background: white; padding: 15px; border-radius: 12px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <p style="margin: 0; font-size: 12px; color: #666;" data-i18n="records_income">Income (Aug)</p>
+                <h3 style="margin: 5px 0 0 0; color: #136B36;">₹ 12,500</h3>
+            </div>
+            <div style="flex: 1; background: white; padding: 15px; border-radius: 12px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <p style="margin: 0; font-size: 12px; color: #666;" data-i18n="records_expense">Expense (Aug)</p>
+                <h3 style="margin: 5px 0 0 0; color: #dc2626;">₹ 4,300</h3>
+            </div>
+        </div>
+
+        <div class="list-container" style="padding: 0 15px 15px 15px;">
+            <h4 style="margin: 10px 0 15px 0; color: #333;" data-i18n="recent_transactions">Recent Transactions</h4>
+            
+            <div class="info-row hoverable" style="align-items: center;">
+                <div style="background: #e8f5e9; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #136B36;">
+                    <i class="fa-solid fa-jug-detergent"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="record_milk_sales" style="margin: 0; font-size: 15px;">Milk Sales</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 12px; color: #666;">12 Aug 2025</p>
+                </div>
+                <div style="color: #136B36; font-weight: bold;">+ ₹2500</div>
+            </div>
+            
+            <div class="info-row hoverable" style="align-items: center;">
+                <div style="background: #ffebee; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #dc2626;">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="record_fertilizer" style="margin: 0; font-size: 15px;">Urea Fertilizer</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 12px; color: #666;">10 Aug 2025</p>
+                </div>
+                <div style="color: #dc2626; font-weight: bold;">- ₹1500</div>
+            </div>
+
+            <div class="info-row hoverable" style="align-items: center;">
+                <div style="background: #ffebee; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #dc2626;">
+                    <i class="fa-solid fa-tractor"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="record_tractor" style="margin: 0; font-size: 15px;">Tractor Rent</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 12px; color: #666;">05 Aug 2025</p>
+                </div>
+                <div style="color: #dc2626; font-weight: bold;">- ₹800</div>
+            </div>
+
+            <button class="primary-btn-full" style="margin-top: 15px;" data-i18n="add_new_transaction">+ Add Transaction</button>
         </div>
         <div style="height: 100px;"></div>
     </main>
