@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri-Vision Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="mobile-app">
+    <!-- TOP HEADER -->
+    <header class="app-header">
+        <div class="menu-icon" id="open-menu-btn"><i class="fa-solid fa-bars"></i></div>
+        <div class="header-actions" style="display: flex; align-items: center;">
+            <select id="language-selector" style="appearance: none; background: #fff; border: 1px solid #136B36; border-radius: 20px; padding: 5px 15px; color: #136B36; font-weight: 600; cursor: pointer; outline: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-right: 15px; font-size: 14px;">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+            </select>
+            <div class="settings-icon"><i class="fa-solid fa-gear"></i></div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD VIEW -->
+    <main class="app-content" id="dashboard-view">
+        <!-- GREETING -->
+        <div class="greeting-section">
+            <h1 data-i18n="greeting">नमस्ते, गणेश सिंह!</h1>
+            <p data-i18n="location">झीपासनी, राजस्थान (Jheepasani, Rajasthan)</p>
+        </div>
+
+        <!-- QUICK ACTIONS GRID -->
+        <div style="padding: 0 20px; margin-bottom: 20px;">
+            <h3 data-i18n="quick_actions" style="margin-bottom: 10px;">Quick Actions</h3>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+                <div style="cursor: pointer;" onclick="navigateTo('disease-detection-view')">
+                    <div style="background: white; border-radius: 12px; padding: 15px 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 5px;">
+                        <i class="fa-solid fa-magnifying-glass" style="font-size: 24px; color: #136B36;"></i>
+                    </div>
+                    <span style="font-size: 11px; font-weight: 600;" data-i18n="quick_check">Check Crop</span>
+                </div>
+                <div style="cursor: pointer;" onclick="navigateTo('my-livestock-view')">
+                    <div style="background: white; border-radius: 12px; padding: 15px 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 5px;">
+                        <i class="fa-solid fa-cow" style="font-size: 24px; color: #136B36;"></i>
+                    </div>
+                    <span style="font-size: 11px; font-weight: 600;" data-i18n="quick_livestock">Livestock</span>
+                </div>
+                <div style="cursor: pointer;">
+                    <div style="background: white; border-radius: 12px; padding: 15px 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 5px;">
+                        <i class="fa-solid fa-clipboard-list" style="font-size: 24px; color: #136B36;"></i>
+                    </div>
+                    <span style="font-size: 11px; font-weight: 600;" data-i18n="quick_records">Farm Records</span>
+                </div>
+                <div style="cursor: pointer;" onclick="navigateTo('chat-view')">
+                    <div style="background: white; border-radius: 12px; padding: 15px 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 5px;">
+                        <i class="fa-solid fa-headset" style="font-size: 24px; color: #136B36;"></i>
+                    </div>
+                    <span style="font-size: 11px; font-weight: 600;" data-i18n="quick_advisor">AI Advisor</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP CARDS: WEATHER & CROPS -->
+        <div class="top-cards-grid">
+            <div class="card weather-card">
+                <h3 data-i18n="weather_title">झीपासनी का मौसम</h3>
+                <div class="weather-main">
+                    <img src="assets/weather.jpg" alt="Weather" class="weather-icon">
+                    <h2>28°C</h2>
+                </div>
+                <p data-i18n="weather_desc">आंशिक रूप से बादल</p>
+                <p><span data-i18n="weather_rain">बारिश: 0%</span> <i class="fa-solid fa-cloud-rain" style="float: right;"></i></p>
+            </div>
+            
+            <div class="card crops-card" style="cursor: pointer;" onclick="navigateTo('my-crops-view')">
+                <div class="card-header-row">
+                    <h3 data-i18n="crops_title">फसलें (Crops)</h3>
+                    <i class="fa-solid fa-chart-column" style="color: #A04000;"></i>
+                </div>
+                <p data-i18n="crop_cotton_summary">कपास (Cotton): 2.0 Acres</p>
+                <p data-i18n="crop_tomato_summary">टमाटर (Tomato): 1.5 Acres</p>
+            </div>
+        </div>
+
+        <!-- LIVESTOCK SECTION -->
+        <div class="card livestock-section" style="cursor: pointer;" onclick="navigateTo('my-livestock-view')">
+            <div class="livestock-header">
+                <h3 data-i18n="livestock_title">मवेशी (Livestock): स्वस्थ (Healthy): 48/50</h3>
+                <div class="healthy-badge"><i class="fa-solid fa-circle-check"></i> 96%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 96%;"></div>
+            </div>
+
+            <div class="livestock-list">
+                <div class="livestock-item">
+                    <img src="assets/cow.jpg" alt="Cow">
+                    <div class="livestock-details">
+                        <h4 data-i18n="cow_title">गायें (Cows):</h4>
+                        <div class="livestock-stats">
+                            <span><span class="dot green"></span> <span data-i18n="cow_stats">स्वस्थ: 30, कुल: 32</span></span>
+                            <span><span class="dot yellow"></span> <span data-i18n="cow_watch">निगरानी (Watch)</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AGRI NEWS -->
+        <div class="news-section">
+            <h3>Agri-news</h3>
+            <div class="news-scroll">
+                <div class="news-card" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)), url('assets/news1.jpg');">
+                    <div class="news-content">
+                        <h4 data-i18n="news1_title">PM-Kisan सम्मान निधि: 12वीं किस्त जल्द!</h4>
+                        <p class="news-action" data-i18n="news1_action">जांचें अपना स्टेटस</p>
+                    </div>
+                </div>
+                <div class="news-card" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)), url('assets/news2.jpg');">
+                    <div class="news-content">
+                        <h4 data-i18n="news2_title">जैविक खेती के लिए नई सरकारी सब्सिडी</h4>
+                        <p class="news-action" data-i18n="news2_action">यहाँ अधिक पढ़ें</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPEAK AND ASK LABEL -->
+        <div class="speak-label">
+            <h3 data-i18n="speak_label">बोलें और पूछें</h3>
+        </div>
+        
+        <!-- PADDING FOR NAVBAR -->
+        <div style="height: 100px;"></div>
+    </main>
+
+    <!-- CHAT VIEW / AI ADVISOR -->
+    <main class="app-content" id="chat-view" style="display: none; padding: 0; background-color: #FAF6F0;">
+        <div class="details-header" style="background-color: #136B36; color: white; border-bottom: none;">
+            <i class="fa-solid fa-arrow-left back-btn" onclick="navigateTo('dashboard-view')" style="cursor: pointer; padding: 5px;"></i>
+            <span data-i18n="ai_advisor_title" style="font-weight: 600;">AI Advisor</span>
+            <i class="fa-solid fa-ellipsis-vertical" style="cursor: pointer; padding: 5px;"></i>
+        </div>
+
+        <div class="chat-history" style="padding: 20px; overflow-y: auto; height: calc(100vh - 140px); padding-bottom: 120px;">
+            <!-- AI Message -->
+            <div style="display: flex; margin-bottom: 15px;">
+                <div style="background: white; padding: 12px 15px; border-radius: 0 15px 15px 15px; font-size: 14px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-width: 85%;">
+                    <p style="margin: 0 0 5px 0; font-weight: 600;" data-i18n="ai_greeting_1">Namaste, Ramesh!</p>
+                    <p style="margin: 0; line-height: 1.4;" data-i18n="ai_greeting_2">I'm your AgriVision AI Advisor. How can I help you today?</p>
+                </div>
+            </div>
+
+            <!-- User Message -->
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
+                <div style="background: #136B36; color: white; padding: 12px 15px; border-radius: 15px 0 15px 15px; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-width: 85%;">
+                    <p style="margin: 0; line-height: 1.4;" data-i18n="user_msg_1">Should I irrigate my tomato crop today?</p>
+                </div>
+            </div>
+
+            <!-- AI Message -->
+            <div style="display: flex; margin-bottom: 15px;">
+                <div style="background: white; padding: 12px 15px; border-radius: 0 15px 15px 15px; font-size: 14px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-width: 85%;">
+                    <p style="margin: 0; line-height: 1.4;" data-i18n="ai_reply_1">Based on your farm history and current weather, it is better to irrigate tomorrow morning. Soil moisture is sufficient today.</p>
+                </div>
+            </div>
+
+            <!-- Suggestions -->
+            <div style="margin-top: 30px;">
+                <p style="font-size: 13px; color: #666; margin-bottom: 10px;" data-i18n="you_may_also_like">You may also like:</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="background: white; padding: 10px 15px; border-radius: 20px; font-size: 13px; color: #136B36; border: 1px solid #136B36; display: inline-block; width: max-content; cursor: pointer;" data-i18n="suggestion_1">How to control early blight?</div>
+                    <div style="background: white; padding: 10px 15px; border-radius: 20px; font-size: 13px; color: #136B36; border: 1px solid #136B36; display: inline-block; width: max-content; cursor: pointer;" data-i18n="suggestion_2">Fertilizer schedule for tomato</div>
+                    <div style="background: white; padding: 10px 15px; border-radius: 20px; font-size: 13px; color: #136B36; border: 1px solid #136B36; display: inline-block; width: max-content; cursor: pointer;" data-i18n="suggestion_3">Goat is not eating properly</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="chat-input-bar">
+            <div class="input-container">
+                <input type="text" placeholder="Ask your question..." data-i18n="ask_question_placeholder" id="chat-input">
+            </div>
+            <button class="send-btn" style="border-radius: 50%; width: 45px; height: 45px; padding: 0; display: flex; justify-content: center; align-items: center; min-width: 45px;">
+                <i class="fa-solid fa-microphone"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- ANIMAL DETAILS VIEW -->
+    <main class="app-content" id="animal-details-view" style="display: none; padding: 0; background-color: #FAF6F0;">
+        <div class="details-header">
+            <i class="fa-solid fa-arrow-left" id="back-to-dash-btn" style="cursor: pointer; padding: 5px;"></i>
+            <span data-i18n="animal_health_title" style="font-weight: 600;">Animal Health</span>
+            <i class="fa-solid fa-file-invoice" style="cursor: pointer; padding: 5px;"></i>
+        </div>
+
+        <div class="animal-profile-card">
+            <img src="assets/cow.jpg" alt="Cow">
+            <div class="animal-profile-info">
+                <h3 data-i18n="animal_name">Cow - Gauri</h3>
+                <p><span data-i18n="animal_age">Age: 4 Years</span><br>
+                <span data-i18n="animal_breed">Breed: Indian Desi</span></p>
+            </div>
+        </div>
+
+        <div class="details-tabs">
+            <div class="tab active" data-tab="health" data-i18n="tab_health">Health</div>
+            <div class="tab" data-tab="vaccination" data-i18n="tab_vaccination">Vaccination</div>
+            <div class="tab" data-tab="treatments" data-i18n="tab_treatments">Treatments</div>
+        </div>
+
+        <!-- Tab Content: Health -->
+        <div class="tab-content active" id="tab-health">
+            <div class="info-row">
+                <div>
+                    <h4 data-i18n="last_checkup">Last Checkup</h4>
+                    <p class="date">10 Aug 2025</p>
+                </div>
+                <div class="status-green" data-i18n="status_healthy">Healthy</div>
+            </div>
+            
+            <div class="info-row hoverable">
+                <div>
+                    <h4 data-i18n="next_vaccination">Next Vaccination</h4>
+                    <p class="date">FMD Vaccine<br>25 Aug 2025</p>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color: #999;"></i>
+            </div>
+
+            <div class="info-row">
+                <div>
+                    <h4 data-i18n="health_alerts">Health Alerts</h4>
+                    <p class="date" data-i18n="no_alerts">No active alerts</p>
+                </div>
+                <div class="icon-circle green"><i class="fa-solid fa-check"></i></div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Vaccination -->
+        <div class="tab-content" id="tab-vaccination" style="display: none;">
+            <div class="info-row">
+                <div>
+                    <h4 data-i18n="vaccine_hs">HS Vaccine</h4>
+                    <p class="date" data-i18n="vaccine_hs_date">Completed: 15 Jan 2025</p>
+                </div>
+                <div class="icon-circle green"><i class="fa-solid fa-check"></i></div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Treatments -->
+        <div class="tab-content" id="tab-treatments" style="display: none;">
+            <div class="info-row">
+                <div>
+                    <h4 data-i18n="treatment_deworming">Deworming</h4>
+                    <p class="date" data-i18n="treatment_deworming_date">Last dose: 01 May 2025</p>
+                </div>
+                <div class="icon-circle green"><i class="fa-solid fa-check"></i></div>
+            </div>
+        </div>
+
+        <div style="padding: 20px;">
+            <button class="primary-btn-full" data-i18n="add_new_record">+ Add New Record</button>
+        </div>
+        <div style="height: 100px;"></div>
+    </main>
+
+    <!-- MY CROPS VIEW -->
+    <main class="app-content" id="my-crops-view" style="display: none; padding: 0; background-color: #FAF6F0;">
+        <div class="details-header">
+            <i class="fa-solid fa-arrow-left back-btn" onclick="navigateTo('dashboard-view')" style="cursor: pointer; padding: 5px;"></i>
+            <span data-i18n="menu_crop" style="font-weight: 600;">My Crops</span>
+            <i class="fa-solid fa-plus" style="cursor: pointer; padding: 5px;"></i>
+        </div>
+        
+        <div class="list-container" style="padding: 15px;">
+            <div class="info-row hoverable crop-item" onclick="navigateTo('disease-detection-view')">
+                <img src="assets/tomato.jpg" alt="Tomato" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="crop_tomato" style="margin: 0; font-size: 16px;">Tomato</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 13px; color: #666;" data-i18n="crop_area_1">1.5 Acres</p>
+                </div>
+                <div class="status-green" data-i18n="status_healthy">Healthy</div>
+            </div>
+            
+            <div class="info-row hoverable crop-item" onclick="navigateTo('disease-detection-view')">
+                <img src="assets/cotton.jpg" alt="Cotton" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="crop_cotton" style="margin: 0; font-size: 16px;">Cotton</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 13px; color: #666;" data-i18n="crop_area_2">2.0 Acres</p>
+                </div>
+                <div class="status-green" data-i18n="status_healthy">Healthy</div>
+            </div>
+
+            <div class="info-row hoverable crop-item" onclick="navigateTo('disease-detection-view')">
+                <img src="assets/rice.jpg" alt="Rice" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="crop_rice" style="margin: 0; font-size: 16px;">Rice</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 13px; color: #666;" data-i18n="crop_area_3">1.0 Acre</p>
+                </div>
+                <div style="color: #d97706; font-weight: bold; font-size: 14px;" data-i18n="status_moderate">Moderate</div>
+            </div>
+
+            <button class="primary-btn-full" style="margin-top: 15px;" data-i18n="add_new_crop">+ Add New Crop</button>
+        </div>
+        <div style="height: 100px;"></div>
+    </main>
+
+    <!-- MY LIVESTOCK VIEW -->
+    <main class="app-content" id="my-livestock-view" style="display: none; padding: 0; background-color: #FAF6F0;">
+        <div class="details-header">
+            <i class="fa-solid fa-arrow-left back-btn" onclick="navigateTo('dashboard-view')" style="cursor: pointer; padding: 5px;"></i>
+            <span data-i18n="menu_livestock" style="font-weight: 600;">My Livestock</span>
+            <i class="fa-solid fa-plus" style="cursor: pointer; padding: 5px;"></i>
+        </div>
+        
+        <div class="list-container" style="padding: 15px;">
+            <div class="info-row hoverable livestock-list-item" onclick="navigateTo('animal-details-view')">
+                <img src="assets/cow.jpg" alt="Cow" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="animal_name" style="margin: 0; font-size: 16px;">Cow - Gauri</h4>
+                    <p class="status-green" style="margin: 2px 0 0 0; font-size: 13px;" data-i18n="status_healthy">Healthy</p>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color: #999;"></i>
+            </div>
+            
+            <div class="info-row hoverable livestock-list-item" onclick="navigateTo('animal-details-view')">
+                <img src="assets/buffalo.jpg" alt="Buffalo" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="animal_buffalo" style="margin: 0; font-size: 16px;">Buffalo - Nandi</h4>
+                    <p class="status-green" style="margin: 2px 0 0 0; font-size: 13px;" data-i18n="status_healthy">Healthy</p>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color: #999;"></i>
+            </div>
+
+            <div class="info-row hoverable livestock-list-item" onclick="navigateTo('animal-details-view')">
+                <img src="assets/goat.jpg" alt="Goat" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="animal_goat" style="margin: 0; font-size: 16px;">Goat - Moti</h4>
+                    <p class="status-green" style="margin: 2px 0 0 0; font-size: 13px;" data-i18n="status_healthy">Healthy</p>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color: #999;"></i>
+            </div>
+            
+            <div class="info-row hoverable livestock-list-item" onclick="navigateTo('animal-details-view')">
+                <img src="assets/hen.jpg" alt="Hen" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                <div style="flex: 1; margin-left: 15px;">
+                    <h4 data-i18n="animal_hen" style="margin: 0; font-size: 16px;">Hen - Laxmi</h4>
+                    <p class="status-green" style="margin: 2px 0 0 0; font-size: 13px;" data-i18n="status_healthy">Healthy</p>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color: #999;"></i>
+            </div>
+
+            <button class="primary-btn-full" style="margin-top: 15px;" data-i18n="add_new_animal">+ Add New Animal</button>
+        </div>
+        <div style="height: 100px;"></div>
+    </main>
+
+    <!-- DISEASE DETECTION VIEW -->
+    <main class="app-content" id="disease-detection-view" style="display: none; padding: 0; background-color: #FAF6F0;">
+        <div class="details-header" style="position: absolute; top: 0; left: 0; right: 0; background: transparent; border: none; z-index: 5;">
+            <i class="fa-solid fa-arrow-left back-btn" onclick="navigateTo('my-crops-view')" style="cursor: pointer; padding: 5px; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.5);"></i>
+            <span data-i18n="disease_detection_title" style="font-weight: 600; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Disease Detection</span>
+            <i class="fa-solid fa-share-nodes" style="cursor: pointer; padding: 5px; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.5);"></i>
+        </div>
+        
+        <img src="assets/leaf.jpg" alt="Leaf Analysis" style="width: 100%; height: 300px; object-fit: cover; display: block;">
+        
+        <div style="padding: 15px; position: relative; top: -20px; background: #FAF6F0; border-radius: 20px 20px 0 0;">
+            <div class="info-row" style="display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <h4 style="margin: 0 0 10px 0; color: #333;" data-i18n="analysis_result">Analysis Result</h4>
+                <p style="margin: 0 0 5px 0; color: #dc2626; font-weight: 600; font-size: 18px;" data-i18n="disease_name">Early Blight (Alternaria solani)</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-size: 13px; color: #666;" data-i18n="confidence">Confidence: 92%</span>
+                </div>
+                <div style="width: 100%; background-color: #eee; height: 6px; border-radius: 3px;">
+                    <div style="width: 92%; background-color: #136B36; height: 100%; border-radius: 3px;"></div>
+                </div>
+            </div>
+
+            <h4 style="margin: 15px 5px 10px 5px; color: #333;" data-i18n="recommended_actions">Recommended Actions</h4>
+            <div class="info-row" style="display: block;">
+                <div style="display: flex; align-items: flex-start; margin-bottom: 12px;">
+                    <i class="fa-solid fa-check" style="color: #136B36; margin-top: 3px; margin-right: 10px;"></i>
+                    <span style="font-size: 14px; color: #444;" data-i18n="action_1">Remove affected leaves</span>
+                </div>
+                <div style="display: flex; align-items: flex-start; margin-bottom: 12px;">
+                    <i class="fa-solid fa-check" style="color: #136B36; margin-top: 3px; margin-right: 10px;"></i>
+                    <span style="font-size: 14px; color: #444;" data-i18n="action_2">Avoid overhead watering</span>
+                </div>
+                <div style="display: flex; align-items: flex-start;">
+                    <i class="fa-solid fa-check" style="color: #136B36; margin-top: 3px; margin-right: 10px;"></i>
+                    <span style="font-size: 14px; color: #444;" data-i18n="action_3">Apply recommended fungicide</span>
+                </div>
+            </div>
+
+            <button class="primary-btn-full" style="margin-top: 15px;" data-i18n="save_to_records">Save to Records</button>
+        </div>
+        <div style="height: 100px;"></div>
+    </main>
+
+    <!-- BOTTOM NAVBAR -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="nav-dashboard">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span data-i18n="nav_dashboard">डैशबोर्ड</span>
+        </div>
+        <div class="nav-item center-mic-spacer" id="nav-chat">
+            <span style="margin-top: 25px;" data-i18n="nav_chat">AI चैट</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-regular fa-user"></i>
+            <span data-i18n="nav_account">खाता</span>
+        </div>
+    </nav>
+
+    <!-- FLOATING CENTER BUTTON (Changes icon based on view) -->
+    <div class="floating-mic">
+        <button class="main-float-btn" id="main-float-btn">
+            <i class="fa-regular fa-message" id="float-btn-icon"></i>
+        </button>
+    </div>
+
+<!-- SIDE DRAWER MENU -->
+<div class="side-menu-overlay" id="side-menu-overlay"></div>
+<div class="side-drawer" id="side-drawer">
+    <div class="drawer-header">
+        <i class="fa-solid fa-arrow-left drawer-close" id="close-menu-btn"></i>
+    </div>
+    <div class="drawer-profile">
+        <img src="assets/farmer.jpg" alt="Farmer Profile" class="drawer-profile-img">
+        <h2 data-i18n="drawer_name">गणेश सिंह</h2>
+        <p data-i18n="location">झीपासनी, राजस्थान</p>
+    </div>
+    <div class="drawer-menu-list">
+        <div class="drawer-item">
+            <i class="fa-solid fa-seedling"></i>
+            <span data-i18n="menu_schemes">कृषि योजनाएँ</span>
+        </div>
+        <div class="drawer-item" onclick="navigateTo('my-crops-view'); document.getElementById('close-menu-btn').click();">
+            <i class="fa-solid fa-leaf"></i>
+            <span data-i18n="menu_crop">मेरी फसल</span>
+        </div>
+        <div class="drawer-item" onclick="navigateTo('my-livestock-view'); document.getElementById('close-menu-btn').click();">
+            <i class="fa-solid fa-cow"></i>
+            <span data-i18n="menu_livestock">मेरे मवेशी</span>
+        </div>
+        <div class="drawer-item">
+            <i class="fa-solid fa-cloud-sun"></i>
+            <span data-i18n="weather_title">मौसम</span>
+        </div>
+        <div class="drawer-item">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span data-i18n="menu_shopping">कृषि खरीदारी</span>
+        </div>
+        <div class="drawer-item">
+            <i class="fa-solid fa-file-contract"></i>
+            <span data-i18n="menu_govt">मेरी सरकारी योजनाएँ</span>
+        </div>
+    </div>
+    <div class="drawer-footer">
+        <div class="drawer-item">
+            <i class="fa-solid fa-gear"></i>
+            <span data-i18n="menu_settings">सेटिंग्स</span>
+        </div>
+        <div class="drawer-item">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span data-i18n="menu_logout">लॉग आउट</span>
+        </div>
+    </div>
+</div>
+</div> <!-- Close mobile-app -->
+
+<script src="script.js"></script>
+</body>
+</html>
+

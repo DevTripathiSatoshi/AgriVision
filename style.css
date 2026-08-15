@@ -1,0 +1,720 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #e0e0e0; /* Grey background outside phone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Simulate Mobile Screen */
+.mobile-app {
+    width: 400px;
+    height: 850px;
+    background-color: #FAF6F0; /* Off-white earthy tone */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid #333;
+}
+
+/* Global Interactive Animations */
+button, .nav-item, .card, .news-card, .input-icon, .settings-icon, .menu-icon {
+    transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.15s ease;
+    cursor: pointer;
+}
+
+button:active, .card:active, .news-card:active {
+    transform: scale(0.96);
+}
+
+.nav-item:active, .input-icon:active, .settings-icon:active, .menu-icon:active {
+    transform: scale(0.90);
+    opacity: 0.7;
+}
+
+/* Top Header */
+.app-header {
+    background-color: #136B36; /* Earthy Orange */
+    padding: 20px 20px 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    position: relative;
+    z-index: 10;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lang-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.lang-btn.active {
+    background-color: #fff;
+    color: #136B36;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.settings-icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Main Content Area */
+.app-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Greeting */
+.greeting-section {
+    margin-bottom: 20px;
+}
+.greeting-section h1 {
+    font-size: 24px;
+    color: #111;
+    margin-bottom: 5px;
+}
+.greeting-section p {
+    font-size: 14px;
+    color: #444;
+}
+
+/* Cards General */
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+/* Top Grid */
+.top-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.weather-card h3, .crops-card h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.weather-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.weather-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.weather-main h2 {
+    font-size: 26px;
+}
+
+.weather-card p, .crops-card p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Livestock Section */
+.livestock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.livestock-header h3 {
+    font-size: 14px;
+}
+
+.healthy-badge {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #2e7d32;
+    border-radius: 4px;
+}
+
+.livestock-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.livestock-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.livestock-details h4 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.livestock-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.dot.green { background-color: #2e7d32; }
+.dot.yellow { background-color: #fbc02d; }
+
+/* Agri News */
+.news-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.news-scroll {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.news-card {
+    min-width: 200px;
+    height: 120px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.news-content h4 {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.news-action {
+    font-size: 11px;
+    background-color: rgba(255,255,255,0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Speak Label */
+.speak-label {
+    text-align: left;
+    margin-top: 10px;
+}
+.speak-label h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    z-index: 10;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888;
+    font-size: 12px;
+    gap: 5px;
+    flex: 1;
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+
+.nav-item.active {
+    color: #136B36;
+}
+
+.center-mic-spacer {
+    /* Pushes text down below the floating mic */
+    color: #555;
+}
+
+/* Floating Mic */
+.floating-mic {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.main-float-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #136B36;
+    border: 5px solid #FAF6F0; /* Blend with background */
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.main-float-btn:active {
+    transform: scale(0.95);
+}
+
+/* Hide scrollbar for webkit */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* ========================================= */
+/* CHAT VIEW STYLES */
+/* ========================================= */
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-card {
+    background-color: #333333;
+    border-radius: 12px;
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    color: white;
+    align-items: center;
+}
+
+.chat-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.chat-card-content {
+    flex: 1;
+}
+
+.chat-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.chat-card-header h4 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chat-time {
+    font-size: 12px;
+    color: #bbb;
+}
+
+.chat-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-card-body p {
+    font-size: 14px;
+    color: #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.chat-badge {
+    background-color: #2e7d32; /* Green */
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-pin {
+    color: #888;
+}
+
+/* Chat Input Bar */
+.chat-input-bar {
+    position: absolute;
+    bottom: 85px; /* Moved up slightly so it doesn't overlap mic too much */
+    left: 0;
+    right: 0;
+    padding: 10px 15px; /* Reduced side padding slightly */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 15;
+}
+
+.input-container {
+    flex: 1;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    gap: 12px;
+    height: 50px;
+    box-sizing: border-box; /* Prevent stretching */
+}
+
+.input-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-icon {
+    color: #666;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.send-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #136B36;
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-right: 5px; 
+    flex-shrink: 0; /* Prevents button from squishing into an oval */
+}
+
+/* ========================================= */
+/* SIDE DRAWER STYLES */
+/* ========================================= */
+.side-menu-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.side-menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.side-drawer {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 280px;
+    background-color: #FAF6F0;
+    z-index: 60;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+.side-drawer.active {
+    transform: translateX(0);
+}
+.drawer-header {
+    background-color: #136B36;
+    height: 80px;
+    padding: 20px;
+    color: white;
+    font-size: 20px;
+}
+.drawer-close {
+    cursor: pointer;
+    padding: 10px; /* larger click area */
+    margin-left: -10px;
+}
+.drawer-profile {
+    text-align: center;
+    margin-top: -40px; /* Overlap header */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.drawer-profile-img {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 4px solid #FAF6F0;
+    object-fit: cover;
+}
+.drawer-profile h2 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #333; /* Explicitly dark so it's visible on light bg */
+}
+.drawer-profile p {
+    font-size: 13px;
+    color: #666;
+}
+.drawer-menu-list {
+    flex: 1;
+    padding: 10px 0;
+    overflow-y: auto;
+}
+.drawer-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 20px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.drawer-item:hover {
+    background-color: rgba(19, 107, 54, 0.1);
+}
+.drawer-item i {
+    font-size: 20px;
+    color: #136B36;
+    width: 25px;
+    text-align: center;
+}
+.drawer-footer {
+    border-top: 1px solid #ddd;
+    padding: 10px 0 20px 0;
+    background-color: #f5f0ea;
+}
+
+/* ========================================= */
+/* ANIMAL DETAILS VIEW STYLES */
+/* ========================================= */
+.details-header {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.animal-profile-card {
+    background-color: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.animal-profile-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.animal-profile-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.animal-profile-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.details-tabs {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+}
+
+.details-tabs .tab {
+    padding: 15px 10px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.details-tabs .tab.active {
+    color: #136B36;
+    font-weight: 600;
+    border-bottom: 3px solid #136B36;
+}
+
+.tab-content {
+    padding: 15px;
+}
+
+.info-row {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.info-row.hoverable {
+    cursor: pointer;
+}
+.info-row.hoverable:active {
+    background-color: #f9f9f9;
+}
+
+.info-row h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.info-row .date {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.status-green {
+    color: #136B36;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.icon-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+}
+
+.icon-circle.green {
+    background-color: #136B36;
+}
+
+.primary-btn-full {
+    width: 100%;
+    padding: 15px;
+    background-color: #136B36;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(19, 107, 54, 0.3);
+}
