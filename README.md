@@ -53,9 +53,6 @@ No framework, bundler, or backend is used.
 ├── .gitattributes  # Line-ending normalization
 └── assets/         # Images (see note below) — NOT included in repo
 ```
-
-> **Assets required:** The HTML references images in an `assets/` folder — e.g. `weather.jpg`, `cow.jpg`, `buffalo.jpg`, `goat.jpg`, `hen.jpg`, `tomato.jpg`, `cotton.jpg`, `rice.jpg`, `leaf.jpg`, `news1.jpg`, `news2.jpg`, `farmer.jpg`. These are not in the repository. Without them, image areas will appear broken. Add your own images with these filenames, or update the `src` paths in `index.html`.
-
 ---
 
 ## Getting Started
@@ -121,12 +118,7 @@ Possible next steps to move from prototype toward a working app:
 
 ---
 
-## Contributing
-
-Contributions are welcome. Fork the repo, create a feature branch, and open a pull request. For translations, mirror the key structure of the English dictionary in `script.js`.
-
----
 
 ## License
 
-No license is currently specified. Add one (e.g. MIT) if you intend for others to reuse this code — without a license, others have no legal permission to use it.
+No license is currently specified. 
